@@ -1,0 +1,108 @@
+.footer-top {
+    background: #f8f9fa;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+  
+  .single-footer h2 {
+    color: #333;
+    font-size: 22px; /* Başlık font boyutunu biraz büyütelim */
+    margin-bottom: 20px;
+  }
+  
+  .single-footer p {
+    color: #555; /* Metin rengini biraz daha koyu yapalım */
+    font-size: 16px; /* Metin font boyutunu biraz büyütelim */
+    line-height: 26px; /* Satır aralığını artıralım */
+  }
+  
+  .social li {
+    display: inline-block;
+    margin-right: 10px; /* Sosyal medya ikonları arasındaki boşluğu artıralım */
+  }
+  
+  .social li a {
+    color: #777;
+    font-size: 20px; /* Sosyal medya ikonlarının boyutunu büyütelim */
+  }
+  
+  .social li a:hover {
+    color: #3b5998;
+  }
+  
+  .f-link ul {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .f-link ul li {
+    list-style: none;
+    margin-bottom: 15px; /* Linkler arasındaki boşluğu artıralım */
+  }
+  
+  .f-link ul li a {
+    color: #777;
+    font-size: 16px;
+    display: block;
+  }
+  
+  .f-link ul li a:hover {
+    color: #3b5998;
+  }
+  
+  .time-sidual .day {
+    padding-bottom: 15px; /* Günler arasındaki boşluğu artıralım */
+  }
+  
+  .time-sidual .day span {
+    font-weight: 600;
+    color: #555; /* Saat rengini biraz daha koyu yapalım */
+  }
+  
+  .newsletter-inner {
+    position: relative;
+  }
+  
+  .newsletter-inner input {
+    width: calc(100% - 70px); /* İnput alanının genişliğini düzenleyelim */
+    padding: 15px;
+    border: 1px solid #ddd;
+    font-size: 16px; /* İnput alanı font boyutunu büyütelim */
+  }
+  
+  .newsletter-inner button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #3b5998;
+    border: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+  }
+  
+  .newsletter-inner button:hover {
+    background: #293e6a;
+  }
+  
+  /* Copyright */
+  .copyright {
+    background: #333;
+    padding: 15px 0;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .copyright p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
