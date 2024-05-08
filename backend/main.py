@@ -58,6 +58,27 @@ def get_categories():
     json_categories = list(map(lambda x: x.to_json(), categories))
     return jsonify({"categories": json_categories})
 
+# POST methods
+
+@app.route("/create_category", methods=["POST"])
+def create_category():
+    categories = request.json.get("categories")
+    
+    if not categories:
+        return (
+            jsonify({"message": "You must include a category name"}),
+            400,
+        )
+
+    new_category = Categories(categories = categories)
+    try:
+        db.session.add(new_category)
+        db.session.commit()
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
+    return jsonify({"message": "Category created!"}), 201
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

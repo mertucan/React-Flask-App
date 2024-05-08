@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../Admin/Admin.css'
 import { useDoctors, useDepartments, useCategories, useTags, useUsers, useBlogs, useAppointments, useMessages, useNewsletter } from '../../../Hooks';
+import CategoriesForm from '../../Forms/CategoriesForm';
 
 const Admin = () => {
   const [showNewsletterTable, setShowNewsletterTable] = useState(false);
@@ -50,12 +51,15 @@ const Admin = () => {
               <tr>
                 <td><strong>ID</strong></td>
                 <td><strong>Email</strong></td>
+                <td><strong>Buttons</strong></td>
               </tr>
               {newsletterData.newsletter.map((newsletters) => { return <tr key={newsletters.id}>
                 <td>{newsletters.id}</td>
                 <td>{newsletters.email}</td>
+                <td><button>Delete</button> <button>Update</button></td>
               </tr> })}
             </tbody>
+            <button>Insert Data</button>
           </table>
         )}
 
@@ -70,6 +74,7 @@ const Admin = () => {
                 <td><strong>Phone</strong></td>
                 <td><strong>Message</strong></td>
                 <td><strong>Subject</strong></td>
+                <td><strong>Buttons</strong></td>
               </tr>
               {messageData.messages.map((message) => { return <tr key={message.id}>
                 <td>{message.id}</td>
@@ -78,8 +83,10 @@ const Admin = () => {
                 <td>{message.phone}</td>
                 <td>{message.message}</td>
                 <td>{message.subject}</td>
+                <td><button>Delete</button> <button>Update</button></td>
               </tr> })}
             </tbody>
+            <button>Insert Data</button>
           </table>
         )}
         
@@ -95,6 +102,7 @@ const Admin = () => {
               <td><strong>Message</strong></td>
               <td><strong>Doctor</strong></td>
               <td><strong>Date</strong></td>
+              <td><strong>Buttons</strong></td>
               </tr>
               {appointmentData.appointments.map((appointment) => {return <tr key={appointment.id}>
                 <td>{appointment.id}</td>
@@ -104,8 +112,10 @@ const Admin = () => {
                 <td>{appointment.message}</td>
                 <td>{appointment.name}</td>
                 <td>{appointment.date}</td>
+                <td><button>Delete</button> <button>Update</button></td>
               </tr>}) }
             </tbody>
+            <button>Insert Data</button>
         </table>
       )}
 
@@ -117,13 +127,16 @@ const Admin = () => {
               <td><strong>ID</strong></td>
               <td><strong>Email</strong></td>
               <td><strong>Username</strong></td>
+              <td><strong>Buttons</strong></td>
               </tr>
               {userData.users.map((user) => {return <tr key={user.id}>
                 <td>{user.id}</td>
                 <td>{user.email}</td>
                 <td>{user.username}</td>
+                <td><button>Delete</button> <button>Update</button></td>
               </tr>}) }
             </tbody>
+            <button>Insert Data</button>
         </table>
       )}
 
@@ -134,12 +147,15 @@ const Admin = () => {
             <tr>
             <td><strong>ID</strong></td>
             <td><strong>Department</strong></td>
+            <td><strong>Buttons</strong></td>
             </tr>
             {departmentData.departments.map((department) => {return <tr key={department.id}>
               <td>{department.id}</td>
               <td>{department.department}</td>
+              <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
+          <button>Insert Data</button>
         </table>
       )}
 
@@ -150,12 +166,15 @@ const Admin = () => {
             <tr>
               <td><strong>ID</strong></td>
               <td><strong>Name</strong></td>
+              <td><strong>Buttons</strong></td>
             </tr>
             {doctorData.doctors.map((doctor) => {return <tr key={doctor.id}>
               <td>{doctor.id}</td>
               <td>{doctor.username}</td>
+              <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
+          <button>Insert Data</button>
         </table>
       )}
 
@@ -168,14 +187,17 @@ const Admin = () => {
               <td><strong>Email</strong></td>
               <td><strong>Message</strong></td>
               <td><strong>Person</strong></td>
+              <td><strong>Buttons</strong></td>
             </tr>
             {blogsData.blogs.map((blog) => {return <tr key={blog.id}>
               <td>{blog.id}</td>
               <td>{blog.email}</td>
               <td>{blog.message}</td>
               <td>{blog.name} {blog.surname}</td>
+              <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
+          <button>Insert Data</button>
         </table>
       )}
 
@@ -186,12 +208,15 @@ const Admin = () => {
             <tr>
               <td><strong>ID</strong></td>
               <td><strong>Tags</strong></td>
+              <td><strong>Buttons</strong></td>
             </tr>
             {tagsData.blog_tags.map((tag) => {return <tr key={tag.id}>
               <td>{tag.id}</td>
               <td>{tag.tags}</td>
+              <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
+          <button>Insert Data</button>
         </table>
       )}
 
@@ -202,12 +227,15 @@ const Admin = () => {
             <tr>
               <td><strong>ID</strong></td>
               <td><strong>Category</strong></td>
+              <td><strong>Buttons</strong></td>
             </tr>
             {categoriesData.categories.map((category) => {return <tr key={category.id}>
               <td>{category.id}</td>
               <td>{category.categories}</td>
+              <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
+          <button>Insert Data</button>
         </table>
       )}
 
