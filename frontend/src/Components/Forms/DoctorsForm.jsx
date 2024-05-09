@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-const CategoriesForm = ({}) => {
-    const [categories, setCategories] = useState("");
+const DoctorsForm = ({}) => {
+    const [username, setUsername] = useState("");
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const data = {
-            categories
+            username
         }
-        const url = 'http://127.0.0.1:5000/create_category'
+        const url = 'http://127.0.0.1:5000/create_doctor'
         const options = {
             method: "POST",
             headers: {
@@ -32,12 +32,12 @@ const CategoriesForm = ({}) => {
   return (
     <form onSubmit={onSubmit}>
         <div>
-            <label htmlFor='categories'>Category:</label>
-            <input type = "text" id = "categories" value = {categories} onChange={(e)=>setCategories(e.target.value)}/>
+            <label htmlFor='username'>Username:</label>
+            <input type = "text" id = "username" value = {username} onChange={(e)=>setUsername(e.target.value)}/>
         </div>
-        <button type="submit">Create Category</button>
+        <button type="submit">Create Doctor</button>
     </form>
   )
 }
 
-export default CategoriesForm
+export default DoctorsForm

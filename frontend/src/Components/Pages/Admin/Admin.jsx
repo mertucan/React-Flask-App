@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import '../Admin/Admin.css'
 import { useDoctors, useDepartments, useCategories, useTags, useUsers, useBlogs, useAppointments, useMessages, useNewsletter } from '../../../Hooks';
 import CategoriesForm from '../../Forms/CategoriesForm';
+import NewsletterForm from '../../Forms/NewsletterForm';
+import DepartmentForm from '../../Forms/DepartmentForm';
+import DoctorsForm from '../../Forms/DoctorsForm';
+import BlogTagsForm from '../../Forms/BlogTagsForm';
+import MessagesForm from '../../Forms/MessagesForm';
+import AppointmentForm from '../../Forms/AppointmentForm';
+import BlogsForm from '../../Forms/BlogsForm';
 
 const Admin = () => {
   const [showNewsletterTable, setShowNewsletterTable] = useState(false);
@@ -23,6 +30,16 @@ const Admin = () => {
   const [appointmentData, appointmentError] = useAppointments();
   const [messageData, messageError] = useMessages();
   const [newsletterData, newsletterError] = useNewsletter();
+
+  const[isModalOpen, setIsModelOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsModelOpen(false);
+  }
+
+  const openCreateModal = () => {
+    if(!isModalOpen) setIsModelOpen(true);
+  }
 
   if (categoriesError || tagsError || blogsError || doctorError || departmentError || userError || appointmentError || messageError || newsletterError)
     return <p>{categoriesError.message || tagsError.message || blogsError.message || doctorError.message || departmentError.message || userError.message || appointmentError.message || messageError.message || newsletterError.message}</p>;
@@ -59,7 +76,15 @@ const Admin = () => {
                 <td><button>Delete</button> <button>Update</button></td>
               </tr> })}
             </tbody>
-            <button>Insert Data</button>
+            <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <NewsletterForm />
+              </div>
+            </div>
+          }
           </table>
         )}
 
@@ -86,7 +111,15 @@ const Admin = () => {
                 <td><button>Delete</button> <button>Update</button></td>
               </tr> })}
             </tbody>
-            <button>Insert Data</button>
+            <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <MessagesForm />
+              </div>
+            </div>
+          }
           </table>
         )}
         
@@ -115,7 +148,15 @@ const Admin = () => {
                 <td><button>Delete</button> <button>Update</button></td>
               </tr>}) }
             </tbody>
-            <button>Insert Data</button>
+            <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <AppointmentForm />
+              </div>
+            </div>
+          }
         </table>
       )}
 
@@ -136,7 +177,7 @@ const Admin = () => {
                 <td><button>Delete</button> <button>Update</button></td>
               </tr>}) }
             </tbody>
-            <button>Insert Data</button>
+            <p>Admin can't add users.</p>
         </table>
       )}
 
@@ -155,7 +196,15 @@ const Admin = () => {
               <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
-          <button>Insert Data</button>
+          <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <DepartmentForm />
+              </div>
+            </div>
+          }
         </table>
       )}
 
@@ -174,7 +223,15 @@ const Admin = () => {
               <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
-          <button>Insert Data</button>
+          <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <DoctorsForm />
+              </div>
+            </div>
+          }
         </table>
       )}
 
@@ -197,7 +254,15 @@ const Admin = () => {
               <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
-          <button>Insert Data</button>
+          <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <BlogsForm />
+              </div>
+            </div>
+          }
         </table>
       )}
 
@@ -216,7 +281,15 @@ const Admin = () => {
               <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
-          <button>Insert Data</button>
+          <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <BlogTagsForm />
+              </div>
+            </div>
+          }
         </table>
       )}
 
@@ -235,7 +308,15 @@ const Admin = () => {
               <td><button>Delete</button> <button>Update</button></td>
             </tr>}) }
           </tbody>
-          <button>Insert Data</button>
+          <button onClick={openCreateModal}>Insert Data</button>
+          {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <CategoriesForm />
+              </div>
+            </div>
+          }
         </table>
       )}
 

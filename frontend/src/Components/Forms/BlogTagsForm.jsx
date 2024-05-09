@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-const CategoriesForm = ({}) => {
-    const [categories, setCategories] = useState("");
+const BlogTagsForm = ({}) => {
+    const [tags, setTags] = useState("");
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const data = {
-            categories
+            tags
         }
-        const url = 'http://127.0.0.1:5000/create_category'
+        const url = 'http://127.0.0.1:5000/create_tag'
         const options = {
             method: "POST",
             headers: {
@@ -32,12 +32,12 @@ const CategoriesForm = ({}) => {
   return (
     <form onSubmit={onSubmit}>
         <div>
-            <label htmlFor='categories'>Category:</label>
-            <input type = "text" id = "categories" value = {categories} onChange={(e)=>setCategories(e.target.value)}/>
+            <label htmlFor='tags'>Category:</label>
+            <input type = "text" id = "tags" value = {tags} onChange={(e)=>setTags(e.target.value)}/>
         </div>
-        <button type="submit">Create Category</button>
+        <button type="submit">Create Tags</button>
     </form>
   )
 }
 
-export default CategoriesForm
+export default BlogTagsForm

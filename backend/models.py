@@ -48,7 +48,7 @@ class Appointment(db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     phone = db.Column(db.String(15), index=True)
     doctor_name = db.Column(db.String(64), index=True)
-    date = db.Column(db.Date, index=True)
+    date = db.Column(db.String(64), index=True)
     message = db.Column(db.String(256), index=True)
     
     def to_json(self):
