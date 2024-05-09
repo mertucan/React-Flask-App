@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import NewsletterForm from '../Forms/NewsletterForm';
 
 const Footer = () => {
   return (
@@ -59,10 +60,7 @@ const Footer = () => {
               <div className="single-footer">
                 <h2>Newsletter</h2>
                 <p>Subscribe to our newsletter to get all our news in your inbox.</p>
-                <form action="/add_email_to_newsletter" method="post" className="newsletter-inner">
-                  <input name="email" placeholder="Email Address" className="common-input" onFocus={(e) => e.target.placeholder = ''} onBlur={(e) => e.target.placeholder = 'Your email address'} required type="email" />
-                  <button className="button" type="submit"><i className="icofont icofont-paper-plane"></i></button>
-                </form>
+                <NewsletterForm />
               </div>
             </div>
           </div>

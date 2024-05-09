@@ -1,6 +1,7 @@
 import React from 'react';
 import HeadContent from '../HeadContent/HeadContent';
 import { useBlogs, useCategories, useTags } from '../../Hooks';
+import BlogsForm from '../Forms/BlogsForm'
 
 const Blogs = () => {
 
@@ -92,35 +93,7 @@ const Blogs = () => {
                   <div className="comments-form">
                     <h2>Leave Comments</h2>
                     {/* Contact Form */}
-                    <form action="/" method="post" className="form">
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="text" name="name" placeholder="Name" required="" />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="text" name="surname" placeholder="Surname" required="" />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="email" name="email" placeholder="E-Mail" required="required" />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <textarea name="message" placeholder="Type your message here" required=""></textarea>
-                          </div>
-                        </div>
-                        <div className="col-12">
-                          <div className="form-group button">	
-                            <button type="submit" className="btn primary"><i className="fa fa-send"></i>Submit Comment</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
+                    <BlogsForm />
                     {/*/ End Contact Form */}
                   </div>
                 </div>

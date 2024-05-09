@@ -1,12 +1,11 @@
 import React from 'react';
 import HeadContent from '../HeadContent/HeadContent';
+import MessagesForm from '../Forms/MessagesForm'
 
 const Contact = () => {
   return (
     <>
       <HeadContent />
-      
-
         {/* Start Contact Us */}
         <section className="contact-us section">
           <div className="container">
@@ -24,40 +23,7 @@ const Contact = () => {
                     <h2>Contact With Us</h2>
                     <p>If you have any questions please feel free to contact with us.</p>
                     {/* Form */}
-                    <form action="/add_message" method="post" className="form">
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="text" name="name" placeholder="Name" required="" />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="email" name="email" placeholder="Email" required="" />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="text" name="phone" placeholder="Phone" required="" />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input type="text" name="subject" placeholder="Subject" required="" />
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <textarea name="message" placeholder="Your Message" required=""></textarea>
-                          </div>
-                        </div>
-                        <div className="col-12">
-                          <div className="form-group login-btn">
-                            <button className="btn" type="submit">Send</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
+                    <MessagesForm />
                     {/*/ End Form */}
                   </div>
                 </div>

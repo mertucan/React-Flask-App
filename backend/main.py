@@ -202,6 +202,27 @@ def create_appointment():
 
     return jsonify({"message": "Appointment created!"}), 201
 
+@app.route("/create_user", methods=["POST"])
+def create_user():
+    email = request.json.get("email")
+    username = request.json.get("username")
+    password_hash = request.json.get("password_hash")
+    
+    if not email or not username or not password_hash:
+        return (
+            jsonify({"message": "You must include all the fields"}),
+            400,
+        )
+
+    new_user = User(email=email, username=username, password_hash=password_hash)
+    try:
+        db.session.add(new_user)
+        db.session.commit()
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
+    return jsonify({"message": "User created!"}), 201
+
 @app.route("/create_blog", methods=["POST"])
 def create_blog():
     email = request.json.get("email")
