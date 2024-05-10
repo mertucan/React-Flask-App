@@ -9,6 +9,7 @@ import BlogTagsForm from '../../Forms/BlogTagsForm';
 import MessagesForm from '../../Forms/MessagesForm';
 import AppointmentForm from '../../Forms/AppointmentForm';
 import BlogsForm from '../../Forms/BlogsForm';
+import NewsletterUpdateForm from '../../Forms/NewsletterUpdateForm';
 
 const Admin = () => {
   const [showNewsletterTable, setShowNewsletterTable] = useState(false);
@@ -186,6 +187,29 @@ const Admin = () => {
     }
   };
 
+  const handleUpdateNewsletter = async (newsletter) => {
+    console.log('Updating newsletter with ID:', newsletter.id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/update_newsletter/${newsletter.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: newsletter.email // or any other fields you want to update
+        })
+      });
+      if (response.ok) {
+        alert('Newsletter updated.');
+        window.location.reload();
+      } else {
+        console.error('Error updating newsletter:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating newsletter:', error);
+    }
+  };
+
   const closeModal = () => {
     setIsModelOpen(false);
   }
@@ -214,35 +238,37 @@ const Admin = () => {
         <button type="button" onClick={() => { setShowCategoriesTable(!showCategoriesTable); setShowNewsletterTable(false); setShowMessagesTable(false); setShowAppointmentsTable(false); setShowUsersTable(false); setShowDepartmentsTable(false); setShowDoctorsTable(false); setShowBlogsTable(false); setShowBlogTagsTable(false); }}>Categories</button>
       </div>
       <div className="table-container">
-        {showNewsletterTable && (
-          <table className="admin-table">
-            <tbody>
-              <h2><strong>Newsletter Data</strong></h2>
-              <tr>
-                <td><strong>ID</strong></td>
-                <td><strong>Email</strong></td>
-                <td><strong>Buttons</strong></td>
-              </tr>
-              {newsletterData.newsletter.map((newsletters) => { return <tr key={newsletters.id}>
-                <td>{newsletters.id}</td>
-                <td>{newsletters.email}</td>
-                <td>
-                <button onClick={() => handleDeleteNewsletter(newsletters.id)}>Delete</button>
-                <button>Update</button>
-                </td>
-              </tr> })}
-            </tbody>
-            <button onClick={openCreateModal}>Insert Data</button>
-          {
-            isModalOpen && <div className = 'modal'>
-              <div className='modal-content'>
-                <span className='close' onClick={closeModal}>&times;</span>
-                <NewsletterForm />
-              </div>
-            </div>
-          }
-          </table>
-        )}
+      {showNewsletterTable && (
+  <table className="admin-table">
+    <tbody>
+      <h2><strong>Newsletter Data</strong></h2>
+      <tr>
+        <td><strong>ID</strong></td>
+        <td><strong>Email</strong></td>
+        <td><strong>Buttons</strong></td>
+      </tr>
+      {newsletterData.newsletter.map((newsletter) => (
+        <tr key={newsletter.id}>
+          <td>{newsletter.id}</td>
+          <td>{newsletter.email}</td>
+          <td>
+            <button onClick={() => handleDeleteNewsletter(newsletter.id)}>Delete</button>
+            <button onClick={() => handleUpdateNewsletter(newsletter)}>Update</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    <button onClick={openCreateModal}>Insert Data</button>
+    {
+      isModalOpen && <div className='modal'>
+        <div className='modal-content'>
+          <span className='close' onClick={closeModal}>&times;</span>
+          <NewsletterForm />
+        </div>
+      </div>
+    }
+  </table>
+)}
 
         {showMessagesTable && (
           <table className="admin-table">
