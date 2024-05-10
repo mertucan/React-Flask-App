@@ -19,9 +19,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="col-lg-6">
-                  <div className="contact-us-form">
-                    <h2>Contact With Us</h2>
-                    <p>If you have any questions please feel free to contact with us.</p>
+                  <div className="contact-us-form">             
                     {/* Form */}
                     <MessagesForm />
                     {/*/ End Form */}
@@ -29,6 +27,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
+            <br></br>
             <div className="contact-info">
               <div className="row">
                 {/* single-info */}
@@ -41,6 +40,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
+                <br></br>
                 {/*/End single-info */}
                 {/* single-info */}
                 <div className="col-lg-4 col-12 ">
@@ -52,6 +52,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
+                <br></br>
                 {/*/End single-info */}
                 {/* single-info */}
                 <div className="col-lg-4 col-12 ">
@@ -63,6 +64,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
+                <br></br>
                 {/*/End single-info */}
               </div>
             </div>

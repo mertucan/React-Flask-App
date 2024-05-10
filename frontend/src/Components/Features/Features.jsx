@@ -8,7 +8,8 @@ const Features = () => {
           <div className="col-lg-12">
             <div className="section-title">
               <h2>We Are Always Ready to Help You & Your Family</h2>
-              <img src="/static/img/section-img.png" alt="#" />
+              {/* Resim yolunu güncelledim */}
+              <img src="/public/img/section-img.png" alt="Hospital Image"/>
               <p>At our hospital, we're here for you and your family, ready to provide prompt and compassionate care. Trust us as your healthcare partner for reliable and personalized services. Your well-being is our priority, ensuring a happy and healthy life for you and your loved ones.</p>
             </div>
           </div>

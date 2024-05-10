@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import HeadContent from '../HeadContent/HeadContent';
 import {useDoctors, useDepartments} from '../../Hooks';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import AppointmentForm from '../Forms/AppointmentForm';
 
 const Appointment = () => {
   const [doctorData, doctorError] = useDoctors();
   const [departmentData, departmentError] = useDepartments();
-  const [selectedDate, setSelectedDate] = useState(null);
 
   if(doctorError || departmentError) return <p>{doctorError.message || departmentError.message}</p>;
   if(!doctorData || !departmentData) return null;

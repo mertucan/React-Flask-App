@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../Pages/Register/Register.css'
 
 const AppointmentForm = ({}) => {
     const [date, setDate] = useState("");
@@ -40,34 +41,34 @@ const AppointmentForm = ({}) => {
     }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="register-container">
         <div>
-            <label htmlFor='date'>Date:</label>
-            <input type = "text" id = "date" value = {date} onChange={(e)=>setDate(e.target.value)}/>
+            <label htmlFor='date' className="form-label">Date:</label>
+            <input type = "text" id = "date" value = {date} onChange={(e)=>setDate(e.target.value)} className="form-control"/>
         </div>
         <div>
-            <label htmlFor='doctor_name'>Doctor Name:</label>
-            <input type = "text" id = "doctor_name" value = {doctor_name} onChange={(e)=>setDoctorName(e.target.value)}/>
+            <label htmlFor='doctor_name' className="form-label">Doctor Name:</label>
+            <input type = "text" id = "doctor_name" value = {doctor_name} onChange={(e)=>setDoctorName(e.target.value)} className="form-control"/>
         </div>
         <div>
-            <label htmlFor='email'>Email:</label>
-            <input type = "text" id = "email" value = {email} onChange={(e)=>setEmail(e.target.value)}/>
+            <label htmlFor='email' className="form-label">Email:</label>
+            <input type = "text" id = "email" value = {email} onChange={(e)=>setEmail(e.target.value)} className="form-control"/>
         </div>
         <div>
-            <label htmlFor='message'>Message:</label>
-            <input type = "text" id = "message" value = {message} onChange={(e)=>setMessage(e.target.value)}/>
+            <label htmlFor='message' className="form-label">Message:</label>
+            <input type = "text" id = "message" value = {message} onChange={(e)=>setMessage(e.target.value)} className="form-control"/>
         </div>
         <div>
-            <label htmlFor='name'>Name:</label>
-            <input type = "text" id = "name" value = {name} onChange={(e)=>setName(e.target.value)}/>
+            <label htmlFor='name' className="form-label">Name:</label>
+            <input type = "text" id = "name" value = {name} onChange={(e)=>setName(e.target.value)} className="form-control"/>
         </div>
         <div>
-            <label htmlFor='phone'>Phone:</label>
-            <input type = "text" id = "phone" value = {phone} onChange={(e)=>setPhone(e.target.value)}/>
+            <label htmlFor='phone' className="form-label">Phone:</label>
+            <input type = "text" id = "phone" value = {phone} onChange={(e)=>setPhone(e.target.value)} className="form-control"/>
         </div>
-        <button type="submit">Create Appointment</button>
+        <button type="submit" className="btn-primary">Create Appointment</button>
     </form>
   )
 }
 
-export default AppointmentForm
+export default AppointmentForm;

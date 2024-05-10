@@ -21,6 +21,7 @@ const Schedule = () => {
                 </div>
               </div>
             </div>
+            <br></br>
             <div className="col-lg-4 col-md-6 col-12">
               {/* single-schedule */}
               <div className="single-schedule middle">
@@ -40,6 +41,7 @@ const Schedule = () => {
                 </div>
               </div>
             </div>
+            <br></br>
             <div className="col-lg-4 col-md-12 col-12">
               {/* single-schedule */}
               <div className="single-schedule last">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CategoriesForm = ({}) => {
+const NewsletterForm = ({}) => {
     const [email, setEmail] = useState("");
 
     const onSubmit = async (e) => {
@@ -40,4 +40,4 @@ const CategoriesForm = ({}) => {
   )
 }
 
-export default CategoriesForm
+export default NewsletterForm

@@ -53,6 +53,22 @@ const Blogs = () => {
                         <p>The collaboration between scientific communities, pharmaceutical companies, and healthcare institutions underscores the urgency and importance of finding solutions to the global health crisis. As these trials progress, the hope is that they will pave the way for breakthroughs that can mitigate the impact of the coronavirus and contribute to building a more resilient and prepared world for future health challenges. The commitment to scientific inquiry and innovation remains a beacon of hope in the midst of these challenging times.</p>					
                       </blockquote>
                     </div>
+                    <div className="blog-comments">
+                  <h2>All Comments</h2>
+                  <div className="comments-body">
+                    {blogsData.blogs.map((blog, index) => (
+                      <div className="comment" key={index}>
+                        <div className="meta-left">
+                          <span className="author">
+                            <a href="#"><img src="/img/no-pp.png" alt="#" /></a>
+                          </span>
+                        </div>
+                        <p><strong>{blog.name} {blog.surname}</strong></p>
+                        <p>{blog.message}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
                     <div className="blog-bottom">
                       {/* Social Share */}
                       <ul className="social-share">
@@ -72,22 +88,6 @@ const Blogs = () => {
                   </div>
                 </div>
                 <div className="col-12">
-                <div className="blog-comments">
-                  <h2>All Comments</h2>
-                  <div className="comments-body">
-                    {blogsData.blogs.map((blog, index) => (
-                      <div className="comment" key={index}>
-                        <div className="meta-left">
-                          <span className="author">
-                            <a href="#"><img src="/img/no-pp.png" alt="#" /></a>
-                            <span><a href="#">{blog.name} {blog.surname}</a></span>
-                          </span>
-                        </div>
-                        <p>{blog.message}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
                 <div className="col-12">
                   <div className="comments-form">

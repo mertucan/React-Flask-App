@@ -39,7 +39,10 @@ const RegisterForm = () => {
   
     return (
       <div className="register-container"> {/* className kullanarak sınıf ekledik */}
-        <h2 className="register-header">Register</h2> {/* className kullanarak sınıf ekledik */}
+        <div className="login-header">
+              <h2>Register</h2>
+              <p className="lead">Sign up</p>
+            </div>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor='email' className="form-label">Email:</label> {/* className kullanarak sınıf ekledik */}

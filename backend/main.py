@@ -372,6 +372,22 @@ def delete_category(id):
         return jsonify({"message": "Category deleted"}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 500
+    
+# PATCH methods
+
+@app.route("/update_newsletter/<int:id>", methods=["PATCH"])
+def update_newsletter(id):
+    newsletter = Newsletter.query.get(id)
+
+    if not newsletter:
+        return jsonify({"message": "Newsletter not found"}), 404
+
+    data = request.json
+    newsletter.first_name = data.get("email", newsletter.email)
+
+    db.session.commit()
+
+    return jsonify({"message": "Newsletter updated."}), 200
 
 if __name__ == "__main__":
     with app.app_context():

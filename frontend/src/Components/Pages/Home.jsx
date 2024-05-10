@@ -17,12 +17,13 @@ const Home = () => {
       <HeadContent />
       <div>
         <Slider />
-        <Schedule />
+        {/*<Schedule />*/}
+        <br></br>
         <Features />
         {/*<FunFacts />*/}
         {/*<Call />*/}
         <Services />
-        {/*<PricingTable />*/}
+        <PricingTable />
         {/*<Clients />*/}
         {/*<BlogTable />*/}
         <Footer />
