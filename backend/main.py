@@ -2,7 +2,7 @@ from flask import request, jsonify
 from config import app, db
 from models import User, Doctors, Department, Appointment, Messages, Blogs, BlogTags, Categories, Newsletter
 
-# GET
+# GET methods
 
 @app.route('/appointment', methods=['GET'])
 def get_appointments():
@@ -244,6 +244,134 @@ def create_blog():
         return jsonify({"message": str(e)}), 400
 
     return jsonify({"message": "Blog created!"}), 201
+
+# DELETE methods
+
+@app.route('/delete_newsletter/<int:id>', methods=['DELETE'])
+def delete_newsletter(id):
+    print('Deleting newsletter with ID:', id)
+    newsletter = Newsletter.query.get(id)
+    if not newsletter:
+        return jsonify({"message": "Newsletter not found"}), 404
+
+    try:
+        db.session.delete(newsletter)
+        db.session.commit()
+        return jsonify({"message": "Newsletter deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_message/<int:id>', methods=['DELETE'])
+def delete_message(id):
+    print('Deleting newsletter with ID:', id)
+    message = Messages.query.get(id)
+    if not message:
+        return jsonify({"message": "Message not found"}), 404
+
+    try:
+        db.session.delete(message)
+        db.session.commit()
+        return jsonify({"message": "Message deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_appointment/<int:id>', methods=['DELETE'])
+def delete_appointment(id):
+    print('Deleting appointment with ID:', id)
+    appointment = Appointment.query.get(id)
+    if not appointment:
+        return jsonify({"message": "Appointment not found"}), 404
+
+    try:
+        db.session.delete(appointment)
+        db.session.commit()
+        return jsonify({"message": "Appointment deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_user/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    print('Deleting user with ID:', id)
+    user = User.query.get(id)
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    try:
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({"message": "User deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_department/<int:id>', methods=['DELETE'])
+def delete_department(id):
+    print('Deleting department with ID:', id)
+    department = Department.query.get(id)
+    if not department:
+        return jsonify({"message": "Department not found"}), 404
+
+    try:
+        db.session.delete(department)
+        db.session.commit()
+        return jsonify({"message": "Department deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_doctor/<int:id>', methods=['DELETE'])
+def delete_doctor(id):
+    print('Deleting doctor with ID:', id)
+    doctor = Doctors.query.get(id)
+    if not doctor:
+        return jsonify({"message": "Doctor not found"}), 404
+
+    try:
+        db.session.delete(doctor)
+        db.session.commit()
+        return jsonify({"message": "Doctor deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_blog/<int:id>', methods=['DELETE'])
+def delete_blog(id):
+    print('Deleting blog with ID:', id)
+    blog = Blogs.query.get(id)
+    if not blog:
+        return jsonify({"message": "Blog not found"}), 404
+
+    try:
+        db.session.delete(blog)
+        db.session.commit()
+        return jsonify({"message": "Blog deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_tag/<int:id>', methods=['DELETE'])
+def delete_tag(id):
+    print('Deleting tag with ID:', id)
+    tag = BlogTags.query.get(id)
+    if not tag:
+        return jsonify({"message": "Tag not found"}), 404
+
+    try:
+        db.session.delete(tag)
+        db.session.commit()
+        return jsonify({"message": "Tag deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    
+@app.route('/delete_category/<int:id>', methods=['DELETE'])
+def delete_category(id):
+    print('Deleting category with ID:', id)
+    category = Categories.query.get(id)
+    if not category:
+        return jsonify({"message": "Category not found"}), 404
+
+    try:
+        db.session.delete(category)
+        db.session.commit()
+        return jsonify({"message": "Category deleted"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
 
 if __name__ == "__main__":
     with app.app_context():

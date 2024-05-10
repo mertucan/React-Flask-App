@@ -33,6 +33,159 @@ const Admin = () => {
 
   const[isModalOpen, setIsModelOpen] = useState(false);
 
+  const handleDeleteNewsletter = async (id) => {
+    console.log('Deleting newsletter with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_newsletter/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting newsletter:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting newsletter:', error);
+    }
+  };
+
+  const handleDeleteMessage = async (id) => {
+    console.log('Deleting message with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_message/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting message:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  };
+  
+  const handleDeleteAppointment = async (id) => {
+    console.log('Deleting appointment with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_appointment/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting appointment:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting appointment:', error);
+    }
+  };
+
+  const handleDeleteUser = async (id) => {
+    console.log('Deleting user with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_user/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting user:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
+
+  const handleDeleteDepartment = async (id) => {
+    console.log('Deleting department with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_department/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting department:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting department:', error);
+    }
+  };
+
+  const handleDeleteDoctor = async (id) => {
+    console.log('Deleting doctor with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_doctor/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting doctor:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting doctor:', error);
+    }
+  };
+
+  const handleDeleteBlog = async (id) => {
+    console.log('Deleting blog with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_blog/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting blog:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting blog:', error);
+    }
+  };
+
+  const handleDeleteTag = async (id) => {
+    console.log('Deleting tag with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_tag/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting tag:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting tag:', error);
+    }
+  };
+
+  const handleDeleteCategory = async (id) => {
+    console.log('Deleting category with ID:', id);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/delete_category/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Data deleted.');
+        window.location.reload();
+      } else {
+        console.error('Error deleting category:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting category:', error);
+    }
+  };
+
   const closeModal = () => {
     setIsModelOpen(false);
   }
@@ -73,7 +226,10 @@ const Admin = () => {
               {newsletterData.newsletter.map((newsletters) => { return <tr key={newsletters.id}>
                 <td>{newsletters.id}</td>
                 <td>{newsletters.email}</td>
-                <td><button>Delete</button> <button>Update</button></td>
+                <td>
+                <button onClick={() => handleDeleteNewsletter(newsletters.id)}>Delete</button>
+                <button>Update</button>
+                </td>
               </tr> })}
             </tbody>
             <button onClick={openCreateModal}>Insert Data</button>
@@ -108,7 +264,10 @@ const Admin = () => {
                 <td>{message.phone}</td>
                 <td>{message.message}</td>
                 <td>{message.subject}</td>
-                <td><button>Delete</button> <button>Update</button></td>
+                <td>
+                  <button onClick={() => handleDeleteMessage(message.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
               </tr> })}
             </tbody>
             <button onClick={openCreateModal}>Insert Data</button>
@@ -145,7 +304,10 @@ const Admin = () => {
                 <td>{appointment.message}</td>
                 <td>{appointment.name}</td>
                 <td>{appointment.date}</td>
-                <td><button>Delete</button> <button>Update</button></td>
+                <td>
+                  <button onClick={() => handleDeleteAppointment(appointment.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
               </tr>}) }
             </tbody>
             <button onClick={openCreateModal}>Insert Data</button>
@@ -174,7 +336,10 @@ const Admin = () => {
                 <td>{user.id}</td>
                 <td>{user.email}</td>
                 <td>{user.username}</td>
-                <td><button>Delete</button> <button>Update</button></td>
+                <td>
+                  <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
               </tr>}) }
             </tbody>
             <p>Admin can't add users.</p>
@@ -193,7 +358,10 @@ const Admin = () => {
             {departmentData.departments.map((department) => {return <tr key={department.id}>
               <td>{department.id}</td>
               <td>{department.department}</td>
-              <td><button>Delete</button> <button>Update</button></td>
+              <td>
+                  <button onClick={() => handleDeleteDepartment(department.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
             </tr>}) }
           </tbody>
           <button onClick={openCreateModal}>Insert Data</button>
@@ -220,7 +388,10 @@ const Admin = () => {
             {doctorData.doctors.map((doctor) => {return <tr key={doctor.id}>
               <td>{doctor.id}</td>
               <td>{doctor.username}</td>
-              <td><button>Delete</button> <button>Update</button></td>
+              <td>
+                  <button onClick={() => handleDeleteDoctor(doctor.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
             </tr>}) }
           </tbody>
           <button onClick={openCreateModal}>Insert Data</button>
@@ -251,7 +422,10 @@ const Admin = () => {
               <td>{blog.email}</td>
               <td>{blog.message}</td>
               <td>{blog.name} {blog.surname}</td>
-              <td><button>Delete</button> <button>Update</button></td>
+              <td>
+                  <button onClick={() => handleDeleteBlog(blog.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
             </tr>}) }
           </tbody>
           <button onClick={openCreateModal}>Insert Data</button>
@@ -278,7 +452,10 @@ const Admin = () => {
             {tagsData.blog_tags.map((tag) => {return <tr key={tag.id}>
               <td>{tag.id}</td>
               <td>{tag.tags}</td>
-              <td><button>Delete</button> <button>Update</button></td>
+              <td>
+                  <button onClick={() => handleDeleteTag(tag.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
             </tr>}) }
           </tbody>
           <button onClick={openCreateModal}>Insert Data</button>
@@ -305,7 +482,10 @@ const Admin = () => {
             {categoriesData.categories.map((category) => {return <tr key={category.id}>
               <td>{category.id}</td>
               <td>{category.categories}</td>
-              <td><button>Delete</button> <button>Update</button></td>
+              <td>
+                  <button onClick={() => handleDeleteCategory(category.id)}>Delete</button>
+                  <button>Update</button>
+                </td>
             </tr>}) }
           </tbody>
           <button onClick={openCreateModal}>Insert Data</button>
