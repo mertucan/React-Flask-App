@@ -383,11 +383,136 @@ def update_newsletter(id):
         return jsonify({"message": "Newsletter not found"}), 404
 
     data = request.json
-    newsletter.first_name = data.get("email", newsletter.email)
+    newsletter.email = data.get("email", newsletter.email)
 
     db.session.commit()
 
     return jsonify({"message": "Newsletter updated."}), 200
+
+@app.route("/update_blog_tags/<int:id>", methods=["PATCH"])
+def update_tag(id):
+    tag = BlogTags.query.get(id)
+
+    if not tag:
+        return jsonify({"message": "Tag not found"}), 404
+
+    data = request.json
+    tag.tags = data.get("tags", tag.tags)
+
+    db.session.commit()
+
+    return jsonify({"message": "Tags updated."}), 200
+
+@app.route("/update_message/<int:id>", methods=["PATCH"])
+def update_message(id):
+    message = Messages.query.get(id)
+
+    if not message:
+        return jsonify({"message": "Message not found"}), 404
+
+    data = request.json
+    message.name = data.get("name", message.name)
+    message.email = data.get("email", message.email)
+    message.phone = data.get("phone", message.phone)
+    message.message = data.get("message", message.message)
+    message.subject = data.get("subject", message.subject)
+
+    db.session.commit()
+
+    return jsonify({"message": "Message updated."}), 200
+
+@app.route("/update_appointment/<int:id>", methods=["PATCH"])
+def update_appointment(id):
+    appointment = Appointment.query.get(id)
+
+    if not appointment:
+        return jsonify({"message": "Appointment not found"}), 404
+
+    data = request.json
+    appointment.name = data.get("name", appointment.name)
+    appointment.email = data.get("email", appointment.email)
+    appointment.doctor_name = data.get("doctor_name", appointment.doctor_name)
+    appointment.date = data.get("date", appointment.date)
+    appointment.message = data.get("message", appointment.message)
+    appointment.phone = data.get("phone", appointment.phone)
+
+    db.session.commit()
+
+    return jsonify({"message": "Appointment updated."}), 200
+
+@app.route("/update_user/<int:id>", methods=["PATCH"])
+def update_user(id):
+    user = User.query.get(id)
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    data = request.json
+    user.username = data.get("username", user.username)
+    user.email = data.get("email", user.email)
+    
+    db.session.commit()
+
+    return jsonify({"message": "User updated."}), 200
+
+@app.route("/update_department/<int:id>", methods=["PATCH"])
+def update_department(id):
+    department = Department.query.get(id)
+
+    if not department:
+        return jsonify({"message": "Department not found"}), 404
+
+    data = request.json
+    department.department = data.get("department", department.department)
+    
+    db.session.commit()
+
+    return jsonify({"message": "Department updated."}), 200
+
+@app.route("/update_doctor/<int:id>", methods=["PATCH"])
+def update_doctor(id):
+    doctor = Doctors.query.get(id)
+
+    if not doctor:
+        return jsonify({"message": "Doctor not found"}), 404
+
+    data = request.json
+    doctor.username = data.get("doctor", doctor.username)
+    
+    db.session.commit()
+
+    return jsonify({"message": "Username updated."}), 200
+
+@app.route("/update_blog/<int:id>", methods=["PATCH"])
+def update_blog(id):
+    blog = Blogs.query.get(id)
+
+    if not blog:
+        return jsonify({"message": "Blog not found"}), 404
+
+    data = request.json
+    blog.name = data.get("name", blog.name)
+    blog.email = data.get("email", blog.email)
+    blog.message = data.get("message", blog.message)
+    blog.surname = data.get("surname", blog.surname)
+
+    db.session.commit()
+
+    return jsonify({"message": "Blog updated."}), 200
+
+@app.route("/update_category/<int:id>", methods=["PATCH"])
+def update_category(id):
+    category = Categories.query.get(id)
+
+    if not category:
+        return jsonify({"message": "Category not found"}), 404
+
+    data = request.json
+    category.categories = data.get("categories", category.categories)
+
+    db.session.commit()
+
+    return jsonify({"message": "Category updated."}), 200
 
 if __name__ == "__main__":
     with app.app_context():

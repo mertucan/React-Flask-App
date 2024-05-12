@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-const NewsletterUpdateForm = ({ newsletter, onClose }) => {
-    const [email, setEmail] = useState("");
+const BlogTagsUpdateForm = ({ tag, onClose }) => {
+    const [tags, setTags] = useState("");
 
     useEffect(() => {
-        if (newsletter) {
-            setEmail(newsletter.email);
+        if (tag) {
+            setTags(tag.tags);
         }
-    }, [newsletter]);
+    }, [tag]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const data = {
-            email
+            tags: tags // Değişiklik yapıldı
         }
-        const url = `http://127.0.0.1:5000/update_newsletter/${newsletter.id}`;
+        const url = `http://127.0.0.1:5000/update_blog_tags/${tag.id}`;
         const options = {
             method: "PATCH",
             headers: {
@@ -44,14 +44,14 @@ const NewsletterUpdateForm = ({ newsletter, onClose }) => {
                 <span className="close" onClick={closeModal}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label htmlFor='tags'>Tag:</label>
+                        <input type="text" id="tags" value={tags} onChange={(e) => setTags(e.target.value)} /> {/* Değişiklik yapıldı */}
                     </div>
-                    <button type="submit">Update Newsletter</button>
+                    <button type="submit">Update Tag</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default NewsletterUpdateForm;
+export default BlogTagsUpdateForm;

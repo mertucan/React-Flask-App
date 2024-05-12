@@ -10,6 +10,14 @@ import MessagesForm from '../../Forms/MessagesForm';
 import AppointmentForm from '../../Forms/AppointmentForm';
 import BlogsForm from '../../Forms/BlogsForm';
 import NewsletterUpdateForm from '../../Forms/NewsletterUpdateForm';
+import MessagesUpdateForm from '../../Forms/MessagesUpdateForm';
+import AppointmentUpdateForm from '../../Forms/AppointmentUpdateForm';
+import UsersUpdateForm from '../../Forms/UsersUpdateForm';
+import DepartmentUpdateForm from '../../Forms/DepartmentUpdateForm';
+import DoctorsUpdateForm from '../../Forms/DoctorsUpdateForm';
+import BlogTagsUpdateForm from '../../Forms/BlogTagsUpdateForm';
+import BlogsUpdateForm from '../../Forms/BlogsUpdateForm';
+import CategoriesUpdateForm from '../../Forms/CategoriesUpdateForm';
 
 const Admin = () => {
   const [showNewsletterTable, setShowNewsletterTable] = useState(false);
@@ -187,35 +195,94 @@ const Admin = () => {
     }
   };
 
-  const handleUpdateNewsletter = async (newsletter) => {
-    console.log('Updating newsletter with ID:', newsletter.id);
-    try {
-      const response = await fetch(`http://127.0.0.1:5000/update_newsletter/${newsletter.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: newsletter.email // or any other fields you want to update
-        })
-      });
-      if (response.ok) {
-        alert('Newsletter updated.');
-        window.location.reload();
-      } else {
-        console.error('Error updating newsletter:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error updating newsletter:', error);
-    }
+  const [selectedNewsletter, setSelectedNewsletter] = useState(null);
+  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const[selectedDepartment, setSelectedDepartment] = useState(null);
+  const[selectedDoctor, setSelectedDoctor] = useState(null);
+  const[selectedTag, setSelectedTag] = useState(null);
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const handleUpdateNewsletter = async (newsletter) => {
+        setSelectedNewsletter(newsletter);
+    };
+
+    const handleUpdateCategory = async (category) => {
+      setSelectedCategory(category);
   };
+
+    const handleUpdateBlog = async (blog) => {
+      setSelectedBlog(blog);
+  };
+
+    const handleUpdateMessage = async (message) => {
+      setSelectedMessage(message);
+  };
+
+  const handleUpdateAppointment = async (appointment) => {
+    setSelectedAppointment(appointment);
+};
+
+const handleUpdateDepartment = async (department) => {
+  setSelectedDepartment(department);
+};
+
+const handleUpdateUser = async (user) => {
+  setSelectedUser(user);
+};
+
+const handleUpdateDoctor = async (doctor) => {
+  setSelectedDoctor(doctor);
+};
+
+const handleUpdateTag = async (tag) => {
+  setSelectedTag(tag);
+};
+
+    const handleCloseUpdateForm = () => {
+        setSelectedNewsletter(null);
+    };
+
+    const handleCloseCategoryUpdateForm = () => {
+      setSelectedCategory(null);
+  };
+
+    const handleCloseBlogUpdateForm = () => {
+      setSelectedBlog(null);
+  };
+
+    const handleCloseTagForm = () => {
+      setSelectedTag(null);
+  };
+
+    const handleCloseMessageUpdateForm = () => {
+      setSelectedMessage(null);
+  };
+
+  const handleCloseAppointmentUpdateForm = () => {
+    setSelectedAppointment(null);
+};
+
+const handleCloseDepartmentUpdateForm = () => {
+  setSelectedDepartment(null);
+};
+
+const handleCloseUserUpdateForm = () => {
+  setSelectedUser(null);
+};
+
+const handleCloseDoctorUpdateForm = () => {
+  setSelectedDoctor(null);
+};
 
   const closeModal = () => {
     setIsModelOpen(false);
   }
 
   const openCreateModal = () => {
-    if(!isModalOpen) setIsModelOpen(true);
+    if (!isModalOpen) setIsModelOpen(true);
   }
 
   if (categoriesError || tagsError || blogsError || doctorError || departmentError || userError || appointmentError || messageError || newsletterError)
@@ -238,37 +305,49 @@ const Admin = () => {
         <button type="button" onClick={() => { setShowCategoriesTable(!showCategoriesTable); setShowNewsletterTable(false); setShowMessagesTable(false); setShowAppointmentsTable(false); setShowUsersTable(false); setShowDepartmentsTable(false); setShowDoctorsTable(false); setShowBlogsTable(false); setShowBlogTagsTable(false); }}>Categories</button>
       </div>
       <div className="table-container">
-      {showNewsletterTable && (
-  <table className="admin-table">
-    <tbody>
-      <h2><strong>Newsletter Data</strong></h2>
-      <tr>
-        <td><strong>ID</strong></td>
-        <td><strong>Email</strong></td>
-        <td><strong>Buttons</strong></td>
-      </tr>
-      {newsletterData.newsletter.map((newsletter) => (
-        <tr key={newsletter.id}>
-          <td>{newsletter.id}</td>
-          <td>{newsletter.email}</td>
-          <td>
-            <button onClick={() => handleDeleteNewsletter(newsletter.id)}>Delete</button>
-            <button onClick={() => handleUpdateNewsletter(newsletter)}>Update</button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-    <button onClick={openCreateModal}>Insert Data</button>
-    {
-      isModalOpen && <div className='modal'>
-        <div className='modal-content'>
-          <span className='close' onClick={closeModal}>&times;</span>
-          <NewsletterForm />
-        </div>
+  {showNewsletterTable && (
+    <div>
+      <table className="admin-table">
+        <tbody>
+          <h2><strong>Newsletter Data</strong></h2>
+          <tr>
+            <td><strong>ID</strong></td>
+            <td><strong>Email</strong></td>
+            <td><strong>Buttons</strong></td>
+          </tr>
+          {newsletterData.newsletter.map((newsletter) => (
+            <tr key={newsletter.id}>
+              <td>{newsletter.id}</td>
+              <td>{newsletter.email}</td>
+              <td>
+                <button onClick={() => handleDeleteNewsletter(newsletter.id)}>Delete</button>
+                <button onClick={() => handleUpdateNewsletter(newsletter)}>Update</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={openCreateModal}>Insert Data</button>
+    </div>
+  )}
+  {selectedNewsletter && (
+    <div className='modal'>
+      <div className='modal-content'>
+        <span className='close' onClick={closeModal}>&times;</span>
+        <NewsletterUpdateForm newsletter={selectedNewsletter} onClose={handleCloseUpdateForm} />
       </div>
-    }
-  </table>
-)}
+    </div>
+  )}
+  {
+  isModalOpen && (
+    <div className='modal'>
+      <div className='modal-content'>
+        <span className='close' onClick={closeModal}>&times;</span>
+        <NewsletterForm />
+      </div>
+    </div>
+  )
+}
 
         {showMessagesTable && (
           <table className="admin-table">
@@ -292,10 +371,11 @@ const Admin = () => {
                 <td>{message.subject}</td>
                 <td>
                   <button onClick={() => handleDeleteMessage(message.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateMessage(message)}>Update</button>
                 </td>
               </tr> })}
             </tbody>
+            <br></br>
             <button onClick={openCreateModal}>Insert Data</button>
           {
             isModalOpen && <div className = 'modal'>
@@ -307,6 +387,14 @@ const Admin = () => {
           }
           </table>
         )}
+        {selectedMessage && (
+    <div className='modal'>
+      <div className='modal-content'>
+        <span className='close' onClick={closeModal}>&times;</span>
+        <MessagesUpdateForm message={selectedMessage} onClose={handleCloseMessageUpdateForm} />
+      </div>
+    </div>
+  )}
         
         {showAppointmentsTable && (
         <table className="admin-table">
@@ -328,14 +416,15 @@ const Admin = () => {
                 <td>{appointment.phone}</td>
                 <td>{appointment.email}</td>
                 <td>{appointment.message}</td>
-                <td>{appointment.name}</td>
+                <td>{appointment.doctor_name}</td>
                 <td>{appointment.date}</td>
                 <td>
                   <button onClick={() => handleDeleteAppointment(appointment.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateAppointment(appointment)}>Update</button>
                 </td>
               </tr>}) }
             </tbody>
+            <br></br>
             <button onClick={openCreateModal}>Insert Data</button>
           {
             isModalOpen && <div className = 'modal'>
@@ -347,6 +436,14 @@ const Admin = () => {
           }
         </table>
       )}
+      {selectedAppointment && (
+    <div className='modal'>
+      <div className='modal-content'>
+        <span className='close' onClick={closeModal}>&times;</span>
+        <AppointmentUpdateForm appointment={selectedAppointment} onClose={handleCloseAppointmentUpdateForm} />
+      </div>
+    </div>
+  )}
 
 {showUsersTable && (
         <table className="admin-table">
@@ -364,13 +461,21 @@ const Admin = () => {
                 <td>{user.username}</td>
                 <td>
                   <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateUser(user)}>Update</button>
                 </td>
               </tr>}) }
             </tbody>
             <p>Admin can't add users.</p>
         </table>
       )}
+      {selectedUser && (
+    <div className='modal'>
+      <div className='modal-content'>
+        <span className='close' onClick={closeModal}>&times;</span>
+        <UsersUpdateForm user={selectedUser} onClose={handleCloseUserUpdateForm} />
+      </div>
+    </div>
+  )}
 
 {showDepartmentsTable && (
         <table className="admin-table">
@@ -386,10 +491,11 @@ const Admin = () => {
               <td>{department.department}</td>
               <td>
                   <button onClick={() => handleDeleteDepartment(department.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateDepartment(department)}>Update</button>
                 </td>
             </tr>}) }
           </tbody>
+          <br></br>
           <button onClick={openCreateModal}>Insert Data</button>
           {
             isModalOpen && <div className = 'modal'>
@@ -401,6 +507,14 @@ const Admin = () => {
           }
         </table>
       )}
+      {selectedDepartment && (
+    <div className='modal'>
+        <div className='modal-content'>
+            <span className='close' onClick={closeModal}>&times;</span>
+            <DepartmentUpdateForm department={selectedDepartment} onClose={handleCloseDepartmentUpdateForm} />
+        </div>
+    </div>
+)}
 
 {showDoctorsTable && (
         <table className="admin-table">
@@ -416,10 +530,11 @@ const Admin = () => {
               <td>{doctor.username}</td>
               <td>
                   <button onClick={() => handleDeleteDoctor(doctor.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateDoctor(doctor)}>Update</button>
                 </td>
             </tr>}) }
           </tbody>
+          <br></br>
           <button onClick={openCreateModal}>Insert Data</button>
           {
             isModalOpen && <div className = 'modal'>
@@ -431,6 +546,15 @@ const Admin = () => {
           }
         </table>
       )}
+      {selectedDoctor && (
+    <div className='modal'>
+        <div className='modal-content'>
+            <span className='close' onClick={closeModal}>&times;</span>
+            <DoctorsUpdateForm doctor={selectedDoctor} onClose={handleCloseDoctorUpdateForm} />
+        </div>
+    </div>
+)}
+      
 
 {showBlogsTable && (
         <table className="admin-table">
@@ -440,20 +564,23 @@ const Admin = () => {
               <td><strong>ID</strong></td>
               <td><strong>Email</strong></td>
               <td><strong>Message</strong></td>
-              <td><strong>Person</strong></td>
+              <td><strong>Name</strong></td>
+              <td><strong>Surname</strong></td>
               <td><strong>Buttons</strong></td>
             </tr>
             {blogsData.blogs.map((blog) => {return <tr key={blog.id}>
               <td>{blog.id}</td>
               <td>{blog.email}</td>
               <td>{blog.message}</td>
-              <td>{blog.name} {blog.surname}</td>
+              <td>{blog.name}</td>
+              <td>{blog.surname}</td>
               <td>
                   <button onClick={() => handleDeleteBlog(blog.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateBlog(blog)}>Update</button>
                 </td>
             </tr>}) }
           </tbody>
+          <br></br>
           <button onClick={openCreateModal}>Insert Data</button>
           {
             isModalOpen && <div className = 'modal'>
@@ -465,36 +592,49 @@ const Admin = () => {
           }
         </table>
       )}
+      {selectedBlog && (
+    <div className='modal'>
+        <div className='modal-content'>
+            <span className='close' onClick={closeModal}>&times;</span>
+            <BlogsUpdateForm blogs={selectedBlog} onClose={handleCloseBlogUpdateForm} />
+        </div>
+    </div>
+)}
 
 {showBlogTagsTable && (
-        <table className="admin-table">
-          <tbody>
+    <table className="admin-table">
+        <tbody>
             <h2><strong>Blog Tags Data</strong></h2>
             <tr>
-              <td><strong>ID</strong></td>
-              <td><strong>Tags</strong></td>
-              <td><strong>Buttons</strong></td>
+                <td><strong>ID</strong></td>
+                <td><strong>Tags</strong></td>
+                <td><strong>Buttons</strong></td>
             </tr>
-            {tagsData.blog_tags.map((tag) => {return <tr key={tag.id}>
-              <td>{tag.id}</td>
-              <td>{tag.tags}</td>
-              <td>
-                  <button onClick={() => handleDeleteTag(tag.id)}>Delete</button>
-                  <button>Update</button>
-                </td>
-            </tr>}) }
-          </tbody>
-          <button onClick={openCreateModal}>Insert Data</button>
-          {
-            isModalOpen && <div className = 'modal'>
-              <div className='modal-content'>
-                <span className='close' onClick={closeModal}>&times;</span>
-                <BlogTagsForm />
-              </div>
-            </div>
-          }
-        </table>
-      )}
+            {tagsData.blog_tags.map((tag) => {
+                return (
+                    <tr key={tag.id}>
+                        <td>{tag.id}</td>
+                        <td>{tag.tags}</td>
+                        <td>
+                            <button onClick={() => handleDeleteTag(tag.id)}>Delete</button>
+                            <button onClick={() => handleUpdateTag(tag)}>Update</button>
+                        </td>
+                    </tr>
+                );
+            })}
+        </tbody>
+        <br></br>
+        <button onClick={openCreateModal}>Insert Data</button>
+    </table>
+)}
+{selectedTag && (
+    <div className='modal'>
+        <div className='modal-content'>
+            <span className='close' onClick={closeModal}>&times;</span>
+            <BlogTagsUpdateForm tag={selectedTag} onClose={handleCloseTagForm} />
+        </div>
+    </div>
+)}
 
 {showCategoriesTable && (
         <table className="admin-table">
@@ -510,10 +650,11 @@ const Admin = () => {
               <td>{category.categories}</td>
               <td>
                   <button onClick={() => handleDeleteCategory(category.id)}>Delete</button>
-                  <button>Update</button>
+                  <button onClick={() => handleUpdateCategory(category)}>Update</button>
                 </td>
             </tr>}) }
           </tbody>
+          <br></br>
           <button onClick={openCreateModal}>Insert Data</button>
           {
             isModalOpen && <div className = 'modal'>
@@ -525,6 +666,14 @@ const Admin = () => {
           }
         </table>
       )}
+      {selectedCategory && (
+    <div className='modal'>
+        <div className='modal-content'>
+            <span className='close' onClick={closeModal}>&times;</span>
+            <CategoriesUpdateForm category={selectedCategory} onClose={handleCloseCategoryUpdateForm} />
+        </div>
+    </div>
+)}
 
       </div>
     </div>

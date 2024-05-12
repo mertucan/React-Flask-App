@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-const NewsletterUpdateForm = ({ newsletter, onClose }) => {
-    const [email, setEmail] = useState("");
+const CategoriesUpdateForm = ({ category, onClose }) => {
+    const [categoryName, setCategoryName] = useState(""); // Değişiklik yapıldı
 
     useEffect(() => {
-        if (newsletter) {
-            setEmail(newsletter.email);
+        if (category) {
+            setCategoryName(category.categories);
         }
-    }, [newsletter]);
+    }, [category]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const data = {
-            email
+            categories: categoryName // Değişiklik yapıldı
         }
-        const url = `http://127.0.0.1:5000/update_newsletter/${newsletter.id}`;
+        const url = `http://127.0.0.1:5000/update_category/${category.id}`;
         const options = {
             method: "PATCH",
             headers: {
@@ -44,14 +44,15 @@ const NewsletterUpdateForm = ({ newsletter, onClose }) => {
                 <span className="close" onClick={closeModal}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label htmlFor='category'>Category:</label>
+                        <input type="text" id="category" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} /> {/* Değişiklik yapıldı */}
                     </div>
-                    <button type="submit">Update Newsletter</button>
+                    <button type="submit">Update Category</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default NewsletterUpdateForm;
+
+export default CategoriesUpdateForm;

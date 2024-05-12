@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
-const NewsletterUpdateForm = ({ newsletter, onClose }) => {
-    const [email, setEmail] = useState("");
+const DepartmentUpdateForm = ({ department, onClose }) => {
+    const [departmentState, setDepartmentState] = useState("");
 
     useEffect(() => {
-        if (newsletter) {
-            setEmail(newsletter.email);
+        if (department) {
+            setDepartmentState(department.department);
         }
-    }, [newsletter]);
+    }, [department]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const data = {
-            email
+            department: departmentState
         }
-        const url = `http://127.0.0.1:5000/update_newsletter/${newsletter.id}`;
+
+        const url = `http://127.0.0.1:5000/update_department/${department.id}`;
         const options = {
             method: "PATCH",
             headers: {
@@ -23,6 +24,7 @@ const NewsletterUpdateForm = ({ newsletter, onClose }) => {
             },
             body: JSON.stringify(data)
         }
+
         const response = await fetch(url, options)
 
         if (response.status !== 200) {
@@ -44,14 +46,14 @@ const NewsletterUpdateForm = ({ newsletter, onClose }) => {
                 <span className="close" onClick={closeModal}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label htmlFor='department'>Department:</label>
+                        <input type="text" id="department" value={departmentState} onChange={(e) => setDepartmentState(e.target.value)} />
                     </div>
-                    <button type="submit">Update Newsletter</button>
+                    <button type="submit">Update Appointment</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default NewsletterUpdateForm;
+export default DepartmentUpdateForm;
