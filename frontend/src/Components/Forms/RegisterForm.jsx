@@ -31,7 +31,7 @@ const RegisterForm = () => {
           throw new Error(responseData.message);
         }
         // Başarılı
-        window.location.reload();
+        window.location.href = '/login';
       } catch (error) {
         alert(error.message);
       }

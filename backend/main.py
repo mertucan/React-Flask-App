@@ -60,6 +60,20 @@ def get_categories():
 
 # POST methods
 
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('username')
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    # Kullanıcıyı veritabanında kontrol et
+    user = User.query.filter_by(username=username, email=email, password_hash=password).first()
+
+    if user:
+        return jsonify({'message': 'Login successful!'}), 200
+    else:
+        return jsonify({'message': 'Invalid credentials'}), 401
+
 @app.route("/create_category", methods=["POST"])
 def create_category():
     categories = request.json.get("categories")
