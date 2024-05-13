@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Pages/Login/Login.css';
 
 const BlogsUpdateForm = ({ blogs, onClose }) => {
     const [name, setName] = useState("");
@@ -55,21 +56,22 @@ const BlogsUpdateForm = ({ blogs, onClose }) => {
           <span className="close" onClick={closeModal}>&times;</span>
           <form onSubmit={onSubmit}> 
             <div>
-              <label htmlFor='name'>Name:</label>
-              <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+              <label htmlFor='name' className="form-label">Name:</label>
+              <input type="text" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div> 
             <div>
-              <label htmlFor='surname'>Surname:</label>
-              <input type="text" id="surname" value={surname} onChange={(e) => setSurname(e.target.value)} />
+              <label htmlFor='surname' className="form-label">Surname:</label>
+              <input type="text" className="form-control" id="surname" value={surname} onChange={(e) => setSurname(e.target.value)} />
             </div> 
             <div>
-              <label htmlFor='message'>Message:</label>
-              <input type="text" id="message" value={message} onChange={(e) => setMessage(e.target.value)} />
+              <label htmlFor='message' className="form-label">Message:</label>
+              <input type="text" className="form-control" id="message" value={message} onChange={(e) => setMessage(e.target.value)} />
             </div> 
             <div>
-              <label htmlFor='email'>Email:</label>
-              <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label htmlFor='email' className="form-label">Email:</label>
+              <input type="text" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div> 
+            <br></br>
             <button type="submit">Update Blog</button>
           </form>
         </div>

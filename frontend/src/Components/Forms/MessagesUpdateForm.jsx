@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Pages/Login/Login.css'
 
 const MessagesUpdateForm = ({ message, onClose }) => {
     const [name, setName] = useState("");
@@ -58,25 +59,26 @@ const MessagesUpdateForm = ({ message, onClose }) => {
           <span className="close" onClick={closeModal}>&times;</span>
           <form onSubmit={onSubmit}>
             <div>
-              <label htmlFor='name'>Name:</label>
-              <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+              <label htmlFor='name' className="form-label">Name:</label>
+              <input type="text" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='email'>Email:</label>
-              <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label htmlFor='email' className="form-label">Email:</label>
+              <input type="text" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='phone'>Phone:</label>
-              <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <label htmlFor='phone' className="form-label">Phone:</label>
+              <input type="text" className="form-control" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='message'>Message:</label>
-              <input type="text" id="message" value={messageText} onChange={(e) => setMessageText(e.target.value)} />
+              <label htmlFor='message' className="form-label">Message:</label>
+              <input type="text" className="form-control" id="message" value={messageText} onChange={(e) => setMessageText(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='subject'>Subject:</label>
-              <input type="text" id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
+              <label htmlFor='subject' className="form-label">Subject:</label>
+              <input type="text" className="form-control" id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
             </div>
+            <br></br>
             <button type="submit">Update Message</button>
           </form>
         </div>

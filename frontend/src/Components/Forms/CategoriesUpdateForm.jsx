@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Pages/Login/Login.css'
 
 const CategoriesUpdateForm = ({ category, onClose }) => {
     const [categoryName, setCategoryName] = useState(""); // Değişiklik yapıldı
@@ -44,9 +45,10 @@ const CategoriesUpdateForm = ({ category, onClose }) => {
                 <span className="close" onClick={closeModal}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor='category'>Category:</label>
-                        <input type="text" id="category" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} /> {/* Değişiklik yapıldı */}
+                        <label htmlFor='category' className="form-label">Category:</label>
+                        <input type="text" className="form-control" id="category" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} /> {/* Değişiklik yapıldı */}
                     </div>
+                    <br></br>
                     <button type="submit">Update Category</button>
                 </form>
             </div>

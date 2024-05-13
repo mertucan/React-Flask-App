@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import '../Pages/Login/Login.css'
 
-const BlogsForm = ({}) => {
+const BlogsForm = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [name, setName] = useState("");
@@ -36,26 +37,26 @@ const BlogsForm = ({}) => {
     }
 
   return (
-    <form onSubmit={onSubmit}>
-        <div>
-            <label htmlFor='email'>Email:</label>
-            <input type = "text" id = "email" value = {email} onChange={(e)=>setEmail(e.target.value)}/>
+    <form onSubmit={onSubmit} className="login-container">
+        <div className="mb-3">
+            <label htmlFor='email' className="form-label">Email:</label>
+            <input type="text" id="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control"/>
         </div>
-        <div>
-            <label htmlFor='message'>Message:</label>
-            <input type = "text" id = "message" value = {message} onChange={(e)=>setMessage(e.target.value)}/>
+        <div className="mb-3">
+            <label htmlFor='name' className="form-label">Name:</label>
+            <input type="text" id="name" value={name} onChange={(e)=>setName(e.target.value)} className="form-control"/>
         </div>
-        <div>
-            <label htmlFor='name'>Name:</label>
-            <input type = "text" id = "name" value = {name} onChange={(e)=>setName(e.target.value)}/>
+        <div className="mb-3">
+            <label htmlFor='surname' className="form-label">Surname:</label>
+            <input type="text" id="surname" value={surname} onChange={(e)=>setSurname(e.target.value)} className="form-control"/>
         </div>
-        <div>
-            <label htmlFor='surname'>Surname:</label>
-            <input type = "text" id = "surname" value = {surname} onChange={(e)=>setSurname(e.target.value)}/>
+        <div className="mb-3">
+            <label htmlFor='message' className="form-label">Message:</label>
+            <textarea type="text" id="message" value={message} onChange={(e)=>setMessage(e.target.value)} className="form-control"/>
         </div>
-        <button type="submit">Create Blog</button>
+        <button type="submit" className="btn-primary">Create Blog</button>
     </form>
   )
 }
 
-export default BlogsForm
+export default BlogsForm;

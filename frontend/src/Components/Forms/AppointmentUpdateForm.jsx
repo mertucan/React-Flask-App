@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Pages/Login/Login.css'
 
 const AppointmentUpdateForm = ({ appointment, onClose }) => {
     const [name, setName] = useState("");
@@ -61,29 +62,30 @@ const AppointmentUpdateForm = ({ appointment, onClose }) => {
           <span className="close" onClick={closeModal}>&times;</span>
           <form onSubmit={onSubmit}>
             <div>
-              <label htmlFor='name'>Name:</label>
-              <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+              <label htmlFor='name' className="form-label">Name:</label>
+              <input type="text" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='phone'>Phone:</label>
-              <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <label htmlFor='phone' className="form-label">Phone:</label>
+              <input type="text" className="form-control" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='email'>Email:</label>
-              <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label htmlFor='email' className="form-label">Email:</label>
+              <input type="text" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='message'>Message:</label>
-              <input type="text" id="message" value={message} onChange={(e) => setMessage(e.target.value)} />
+              <label htmlFor='message' className="form-label">Message:</label>
+              <input type="text" className="form-control" id="message" value={message} onChange={(e) => setMessage(e.target.value)} />
             </div>
             <div>
-              <label htmlFor='doctor_name'>Doctor:</label>
-              <input type="text" id="doctor_name" value={doctor_name} onChange={(e) => setDoctor(e.target.value)} />
+              <label htmlFor='doctor_name' className="form-label">Doctor:</label>
+              <input type="text" className="form-control" id="doctor_name" value={doctor_name} onChange={(e) => setDoctor(e.target.value)} />
             </div>    
             <div>
-              <label htmlFor='date'>Date:</label>
-              <input type="text" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
+              <label htmlFor='date' className="form-label">Date:</label>
+              <input type="text" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
             </div>    
+            <br></br>
             <button type="submit">Update Appointment</button>
           </form>
         </div>

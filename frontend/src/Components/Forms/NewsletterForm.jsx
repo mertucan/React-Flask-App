@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../Pages/Login/Login.css'
 
 const NewsletterForm = ({}) => {
     const [email, setEmail] = useState("");
@@ -31,11 +32,11 @@ const NewsletterForm = ({}) => {
 
   return (
     <form onSubmit={onSubmit}>
-        <div>
-            <label htmlFor='email'>Email:</label>
+        <div className='mb-3'>
+            <label htmlFor='email' className="form-label">Email:</label>
             <input type = "text" id = "email" value = {email} onChange={(e)=>setEmail(e.target.value)}/>
         </div>
-        <button type="submit">Create Newsletter</button>
+        <button type="submit" className="btn-primary">Create Newsletter</button>
     </form>
   )
 }

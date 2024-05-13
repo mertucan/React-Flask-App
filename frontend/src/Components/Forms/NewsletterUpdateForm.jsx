@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Pages/Login/Login.css'
 
 const NewsletterUpdateForm = ({ newsletter, onClose }) => {
     const [email, setEmail] = useState("");
@@ -44,9 +45,10 @@ const NewsletterUpdateForm = ({ newsletter, onClose }) => {
                 <span className="close" onClick={closeModal}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label htmlFor='email' className="form-label">Email:</label>
+                        <input type="text" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
+                    <br></br>
                     <button type="submit">Update Newsletter</button>
                 </form>
             </div>

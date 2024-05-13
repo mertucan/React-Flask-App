@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Pages/Login/Login.css';
 
 const BlogTagsUpdateForm = ({ tag, onClose }) => {
     const [tags, setTags] = useState("");
@@ -44,9 +45,10 @@ const BlogTagsUpdateForm = ({ tag, onClose }) => {
                 <span className="close" onClick={closeModal}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor='tags'>Tag:</label>
-                        <input type="text" id="tags" value={tags} onChange={(e) => setTags(e.target.value)} /> {/* Değişiklik yapıldı */}
+                        <label htmlFor='tags' className="form-label">Tag:</label>
+                        <input type="text" className="form-control" id="tags" value={tags} onChange={(e) => setTags(e.target.value)} /> {/* Değişiklik yapıldı */}
                     </div>
+                    <br></br>
                     <button type="submit">Update Tag</button>
                 </form>
             </div>

@@ -625,6 +625,14 @@ const handleCloseDoctorUpdateForm = () => {
         </tbody>
         <br></br>
         <button onClick={openCreateModal}>Insert Data</button>
+        {
+            isModalOpen && <div className = 'modal'>
+              <div className='modal-content'>
+                <span className='close' onClick={closeModal}>&times;</span>
+                <BlogTagsForm />
+              </div>
+            </div>
+          }
     </table>
 )}
 {selectedTag && (
