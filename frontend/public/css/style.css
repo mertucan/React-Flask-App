@@ -596,7 +596,8 @@ body{
 	background-repeat:no-repeat;
 }
 .slider .single-slider .text{
-	margin-top:120px;
+	text-align: center;
+	padding-top: 50px;
 }
 .slider.index2 .single-slider .text{
 	margin-top:150px;
@@ -619,6 +620,7 @@ body{
 }
 .slider .single-slider .button{
 	margin-top:30px;
+	text-align: center;
 }
 .slider .single-slider .btn{
 	color:#fff;
@@ -696,6 +698,8 @@ body{
 	height: 230px;
 }
 .schedule .schedule-inner {
+	display: flex;
+	justify-content: space-between; /* Öğeleri yatayda eşit aralıklarla hizalar */
 	position: relative;
 	transform: translateY(-50%);
 	z-index:9;
@@ -706,11 +710,15 @@ body{
 	z-index:3;
 	border-radius:5px;
 	background:#1A76D1;
-	 -webkit-transition: all .3s ease-out 0s;
-    -moz-transition: all .3s ease-out 0s;
-    -ms-transition: all .3s ease-out 0s;
-    -o-transition: all .3s ease-out 0s;
-    transition: all .3s ease-out 0s;
+	-webkit-transition: all .3s ease-out 0s;
+	-moz-transition: all .3s ease-out 0s;
+	-ms-transition: all .3s ease-out 0s;
+	-o-transition: all .3s ease-out 0s;
+	transition: all .3s ease-out 0s;
+	flex: 0 1 calc(33.333% - 20px); /* Her öğenin eşit genişlikte olmasını sağlar ve aralarında 20 piksel boşluk bırakır */
+}
+.schedule .single-schedule:nth-child(2) {
+	margin: 0 10px; /* İkinci öğenin solunda ve sağındaki boşluğu ayarlar */
 }
 .schedule .single-schedule .inner {
 	overflow:hidden;
@@ -720,22 +728,22 @@ body{
 }
 .schedule .single-schedule:before{
 	position: absolute;
-    z-index: -1;
-    content: '';
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 80%;
-    height: 90%;
-    background:#1A76D1;
-    opacity: 0;
-    filter: blur(10px);
-    -webkit-transition: all .3s ease-out 0s;
-    -moz-transition: all .3s ease-out 0s;
-    -ms-transition: all .3s ease-out 0s;
-    -o-transition: all .3s ease-out 0s;
-    transition: all .3s ease-out 0s;
+	z-index: -1;
+	content: '';
+	bottom: -10px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 80%;
+	height: 90%;
+	background:#1A76D1;
+	opacity: 0;
+	filter: blur(10px);
+	-webkit-transition: all .3s ease-out 0s;
+	-moz-transition: all .3s ease-out 0s;
+	-ms-transition: all .3s ease-out 0s;
+	-o-transition: all .3s ease-out 0s;
+	transition: all .3s ease-out 0s;
 }
 .schedule .single-schedule:hover:before{
 	opacity: 0.8;
@@ -747,11 +755,11 @@ body{
 	position: absolute;
 	font-size: 110px;
 	color: #fff;
-	 -webkit-transition: all .3s ease-out 0s;
-    -moz-transition: all .3s ease-out 0s;
-    -ms-transition: all .3s ease-out 0s;
-    -o-transition: all .3s ease-out 0s;
-    transition: all .3s ease-out 0s;
+	-webkit-transition: all .3s ease-out 0s;
+	-moz-transition: all .3s ease-out 0s;
+	-ms-transition: all .3s ease-out 0s;
+	-o-transition: all .3s ease-out 0s;
+	transition: all .3s ease-out 0s;
 	z-index:-1;
 	visibility:visible;
 	opacity:0.2;
@@ -801,9 +809,6 @@ body{
 	margin-left:10px;
 }
 .schedule .single-schedule .time-sidual{
-	
-}
-.schedule .single-schedule .time-sidual{
 	overflow:hidden;
 	margin-top:17px;
 }
@@ -824,6 +829,7 @@ body{
 	font-weight: 400;
 	float: right;
 }
+
 /*=============================
 	End Schedule CSS
 ===============================*/
@@ -845,6 +851,17 @@ body{
 	position:relative;
 	padding:10px 20px;
 }
+.Feautes .row {
+	display: flex;
+	justify-content: space-between; /* Sıralamanın arasında boşluk bırakır */
+	flex-wrap: wrap; /* Eğer ekran küçülürse, satırları aşağı atar */
+  }
+  
+  .Feautes .col-lg-4 {
+	flex: 0 0 calc(33.3333% - 30px); /* 3 sütun için genişlik ayarı */
+	max-width: calc(33.3333% - 30px);
+	margin-bottom: 30px; /* Sütunlar arasında boşluk bırakır */
+  }
 .Feautes .single-features::before {
 	position: absolute;
 	content: "";
@@ -897,65 +914,72 @@ body{
 /*=======================
 	Start Fun Facts CSS
 =========================*/
-.fun-facts{
-	position:relative;
+.fun-facts {
+    position: relative;
+    background: url('../img/fun-bg.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
+    padding: 120px 0;
 }
-.fun-facts.section{
-	padding:120px 0;
+
+.fun-facts .row {
+    display: flex;
+    justify-content: center; /* Öğeleri yatayda ortalamak için */
 }
-.fun-facts{
-	background: url('/static/img/fun-bg.jpg');
-	background-size:cover;
-	background-repeat:no-repeat;
-}
+
 .fun-facts .single-fun {
-	
+    position: relative;
+    text-align: center;
+    margin-bottom: 0;
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+	line-height: 0;
 }
+
 .fun-facts .single-fun i {
-	position: absolute;
-	left: 0;
-	font-size: 62px;
-	color: #fff;
-	height: 70px;
-	width: 70px;
-	line-height: 67px;
-	font-size: 28px;
-	text-align: center;
-	padding: 0;
-	margin: 0;
-	border: 2px solid #fff;
-	border-radius: 0px;
-	top: 50%;
-	margin-top: -35px;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	border-radius: 50%;
+    position: relative;
+    font-size: 62px;
+    color: #fff;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 28px;
+    text-align: center;
+    padding: 0;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
 }
-.fun-facts .single-fun:hover i{
-	color:#1A76D1;
-	background:#fff;
-	border-color:transparent;
+
+.fun-facts .single-fun:hover i {
+    color: #1A76D1;
+    background: #fff;
+    border-color: transparent;
 }
+
 .fun-facts .single-fun .content {
-	padding-left: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
+
 .fun-facts .single-fun span {
-	color: #fff;
-	font-weight: 600;
-	font-size: 30px;
-	position: relative;
-	display: block;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s eas;
-	display: block;
-	margin-bottom: 7px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    display: block;
+    margin-bottom: 7px;
+    transition: all 0.4s ease;
 }
-.fun-facts .single-fun p{
-	color:#fff;
-	font-size:15px;
+
+.fun-facts .single-fun p {
+    color: #fff;
+    font-size: 15px;
 }
+
 /*===================
 	End Fun Facts
 =====================*/
@@ -1070,7 +1094,7 @@ body{
 	Start Call to action CSS
 =================================*/
 .call-action{
-	background-image: url('/static/img/call-bg.jpg');
+	background-image: url('../img/call-bg.jpg');
 	background-size:cover;
 	background-position:center;
 	position:relative;
@@ -1316,6 +1340,16 @@ body{
 	position:relative;
 	padding-left:70px;
 }
+.services .row {
+	display: flex;
+	flex-wrap: wrap; /* Eğer ekran küçülürse, satırları aşağı atar */
+	justify-content: space-between; /* Sütunlar arasında boşluk bırakır */
+  }
+  
+  .services .col-lg-4 {
+	flex: 0 0 calc(33.3333% - 30px); /* 3 sütun için genişlik ayarı */
+	max-width: calc(33.3333% - 30px);
+  }
 .services .single-service i{
 	font-size:45px;
 	color:#1a76d1;
@@ -1624,9 +1658,19 @@ body{
 	text-align: center;
 	position: relative;
 	overflow: hidden;
-	margin: 15px 0;
+	margin: 15px 5px;
 	padding:45px 35px 30px 35px;
 }
+.pricing-table .col-lg-4 {
+	width: calc(33.3333% - 10px); /* Üç servis tablosunun yan yana sığması için genişlik ayarı */
+	float: left;
+	margin-right: 10px; /* Sağ taraftaki boşluğu ayarlamak için sağ marj ekledik */
+  }
+  
+  /* Son sütundaki sağ boşluğu kaldırmak için margin-right değerini 0'a ayarladık */
+  .pricing-table .col-lg-4:last-child {
+	margin-right: 0;
+  }
 /* Table Head */
 .pricing-table .single-table .table-head {
 	text-align:center;
@@ -1715,15 +1759,20 @@ body{
 	Start Clients CSS
 ==========================*/
 .clients{
-	background-image: url('/static/img/client-bg.jpg');
-	background-size:cover;
-	background-position:center;
-	padding:100px 0px;
-	position:relative;
+	background-image: url('../img/client-bg.jpg');
+	background-size: auto; /* cover kullanarak arka plan resminin tamamen kaplanmasını sağlıyoruz */
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 20px 0; /* padding değerini azaltıyoruz */
+	position: relative;
+	z-index: 1; /* arka planın önünde olması için z indeksini arttırıyoruz */
 }
-.clients .single-clients{
-	
+
+.clients .single-clients {
+	position: relative;
+	z-index: 2; /* müşteri görüntülerinin arka plandan önde olması için z indeksini arttırıyoruz */
 }
+
 .clients .single-clients img {
 	width: 100%;
 	cursor: pointer;

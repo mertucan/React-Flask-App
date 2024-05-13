@@ -3,7 +3,7 @@ import React from 'react';
 const FunFacts = () => {
   return (
     <div id="fun-facts" className="fun-facts section overlay">
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col-lg-3 col-md-6 col-12">
             {/* Start Single Fun */}

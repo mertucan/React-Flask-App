@@ -17,10 +17,9 @@ const Home = () => {
       <HeadContent />
       <div>
         <Slider />
-        {/*<Schedule />*/}
-        <br></br>
+        <Schedule />
         <Features />
-        {/*<FunFacts />*/}
+        <FunFacts />
         {/*<Call />*/}
         <Services />
         <PricingTable />
