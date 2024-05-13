@@ -49,10 +49,6 @@ const MessagesForm = () => {
           <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" />
         </div>
         <div className="form-group">
-          <label htmlFor='message' className="form-label">Message:</label>
-          <input type="text" id="message" value={message} onChange={(e) => setMessage(e.target.value)} className="form-control" />
-        </div>
-        <div className="form-group">
           <label htmlFor='name' className="form-label">Name:</label>
           <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
         </div>
@@ -63,6 +59,10 @@ const MessagesForm = () => {
         <div className="form-group">
           <label htmlFor='subject' className="form-label">Subject:</label>
           <input type="text" id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label htmlFor='message' className="form-label">Message:</label>
+          <textarea type="text" id="message" value={message} onChange={(e) => setMessage(e.target.value)} className="form-control" />
         </div>
         <button type="submit" className="btn-primary">Contact Us</button>
       </form>
